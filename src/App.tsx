@@ -23,10 +23,14 @@ function App() {
   }
 
   return (
-   <><Menu callback={addTask} />
-   <TaskList taskList={taskList} removeCallback={removeTask}/>
-   {taskList.length > 0 ? <button onClick={clearTaskList}>Clear Task List</button> : ""}
-   </>
+   <>
+    <Menu callback={addTask} />
+    <TaskList taskList={taskList} removeCallback={removeTask}/>
+    {taskList.length > 0 ? 
+      <button onClick={clearTaskList}>Clear Task List</button> : 
+      ""
+    }
+  </>
   );
 }
 

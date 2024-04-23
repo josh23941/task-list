@@ -10,12 +10,14 @@ export const Menu = ( props: MenuProps ) => {
 
     function addTask() {
         let taskInput: HTMLInputElement = document.getElementById("addTaskInput") as HTMLInputElement;
-        props.callback({ 
-            id: taskCount,
-            name: taskInput.value
-        });
-        taskInput.value = "";
-        setTaskCount(taskCount + 1)
+        if (!!taskInput.value && taskInput.value.length > 0) {
+            props.callback({ 
+                id: taskCount,
+                name: taskInput.value
+            });
+            taskInput.value = "";
+            setTaskCount(taskCount + 1)
+        }
     }
 
     return (
