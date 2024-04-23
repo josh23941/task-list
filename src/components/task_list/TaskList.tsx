@@ -1,3 +1,7 @@
+import { TaskComponent } from "../task/TaskComponent";
+import  {DndContext } from '@dnd-kit/core';
+
+
 type TaskListProps = {
     taskList: Array<Task>;
     removeCallback: (taskId: number) => void;
@@ -10,12 +14,12 @@ export const TaskList = (props: TaskListProps) => {
     }
 
     return(<table>
+            <DndContext>             
             {
               props.taskList.map((task, i) => {
-                return <><tr>
-                            <td>{task.name}</td>
-                            <td><button onClick={() => removeTask(task.id)}>Remove</button></td></tr></>
+                return <TaskComponent task={task} removeTask={removeTask} />
               })
-            }        
+            }
+            </DndContext>       
     </table>)
 }
